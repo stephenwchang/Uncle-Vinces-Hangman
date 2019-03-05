@@ -17,11 +17,16 @@ function writeDisplay() {
   document.getElementById("alreadyGuessed-text").innerHTML = alreadyGuessed
 }
 
-// pushes the appropriate length of _'s to our currentWordText array
-for (var i = 0; i < currentWord.length; i++) {
+// resets currentWordText array with _'s
+
+function reset() {
+  currentWordText = []
+  for (var i = 0; i < currentWord.length; i++) {
   currentWordText.push("_")
+  }
 }
 
+reset()
 
 document.addEventListener("keyup", keyPress)
 
@@ -52,14 +57,9 @@ function keyPress() {
     if (currentWordText.indexOf("_") === -1) {
       wins ++
       currentWord = wordBank[wins]
-      currentWordText = []
       guessesRem = 5
       alreadyGuessed = []
-
-
-      for (var i = 0; i < currentWord.length; i++) {
-        currentWordText.push("_")
-      }
+      reset()
 
       setTimeout(function(){writeDisplay()}, 1500)
     }
@@ -67,6 +67,13 @@ function keyPress() {
   }
 
   if (guessesRem === 0) {
-     setTimeout(function(){window.alert("no more guesses remaining")}, 750)
+     setTimeout(function(){
+       wins = 0
+       guessesRem = 5
+       alreadyGuessed = []
+       currentWord = wordBank[0]
+       reset()
+       writeDisplay()
+      }, 750)
   }
 }
