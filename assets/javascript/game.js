@@ -30,7 +30,6 @@ function writeDisplay() {
 }
 
 // resets currentWordText array with _'s
-
 function reset() {
   currentWordText = []
   for (var i = 0; i < currentWord.length; i++) {
