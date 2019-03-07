@@ -1,4 +1,4 @@
-// Word Guess Game (word bank can be modified without breaking functions)
+// Word Guess Game (word bank can be modified without breaking)
 
 var wordBank = ["basketball", "jumpshot", "dribble", "rebound", "assist", "pass"]
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -8,9 +8,11 @@ var guessesRem = 5
 var wins = 0
 var currentWord = wordBank[wins]
 var currentWordText = []
+var captionText = ""
 
 // write display function
 function writeDisplay() {
+  document.getElementById("caption-text").innerHTML = captionText
   document.getElementById("wins-text").innerHTML = "Wins: " + wins
   document.getElementById("currentWord-text").innerHTML = currentWordText
   document.getElementById("guessesRem-text").innerHTML = guessesRem
@@ -26,9 +28,6 @@ function reset() {
   }
 }
 
-reset()
-
-document.addEventListener("keyup", keyPress)
 
 function keyPress() {
 
@@ -36,8 +35,8 @@ function keyPress() {
   // for testing
   console.log(guess)
 
-  //initial check to see if user guess is a viable character
-  if (alphabet.indexOf(guess) > -1 && guessesRem != 0) {
+  //initial check for: 1. if user guess is a viable character 2. there are guesses remaining 3. captionText is empty (otherwise, user can still input guesses during victory/loss caption)
+  if (alphabet.indexOf(guess) > -1 && guessesRem != 0 && captionText === "") {
     // loops a condition to check if user's guess exists in the current word, and then reveals them in respective order in the document
     for (var i=0; i < currentWord.length; i++) {
       if (guess === currentWord[i]) {
@@ -55,25 +54,42 @@ function keyPress() {
 
     // win condition: if there are no longer any _'s in currentWordText
     if (currentWordText.indexOf("_") === -1) {
-      wins ++
-      currentWord = wordBank[wins]
-      guessesRem = 5
-      alreadyGuessed = []
-      reset()
+      captionText = "Good job! Now try the next one!"
+      document.getElementById("caption-text").innerHTML = captionText
+      document.getElementById("victory-audio").play();
+      setTimeout(function(){
+        wins ++
+        currentWord = wordBank[wins]
+        guessesRem = 5
+        alreadyGuessed = []
+        captionText = ""
+        reset()
+        writeDisplay()
 
-      setTimeout(function(){writeDisplay()}, 1500)
+      }, 2500)
     }
 
   }
 
+  // lose condition
   if (guessesRem === 0) {
-     setTimeout(function(){
-       wins = 0
-       guessesRem = 5
-       alreadyGuessed = []
-       currentWord = wordBank[0]
-       reset()
-       writeDisplay()
-      }, 750)
+
+      captionText = "You lose :( Start over and try again"
+      document.getElementById("caption-text").innerHTML = captionText
+      document.getElementById("loss-audio").play();
+      setTimeout(function(){
+        wins = 0
+        currentWord = wordBank[0]
+        guessesRem = 5
+        alreadyGuessed = []
+        captionText = ""
+        reset()
+        writeDisplay()
+
+      }, 2500)
   }
 }
+
+reset()
+
+document.addEventListener("keyup", keyPress)
