@@ -23,7 +23,7 @@ var captionText = ""
 function writeDisplay() {
   document.getElementById("caption-text").innerHTML = captionText
   document.getElementById("wins-text").innerHTML = "Wins: " + wins
-  document.getElementById("currentWord-text").innerHTML = currentWordText
+  document.getElementById("currentWord-text").innerHTML = currentWordText.join(" ")
   document.getElementById("guessesRem-text").innerHTML = guessesRem
   document.getElementById("alreadyGuessed-text").innerHTML = alreadyGuessed
   document.getElementById("hangman-image").src = hangmanImagesArray[guessesRem]
