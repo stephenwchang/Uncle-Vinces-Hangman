@@ -2,9 +2,18 @@
 
 var wordBank = ["basketball", "jumpshot", "dribble", "rebound", "assist", "pass"]
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var hangmanImagesArray = [
+  'assets/images/hangman-images/hangman-0.png' ,
+  'assets/images/hangman-images/hangman-1.png' ,
+  'assets/images/hangman-images/hangman-2.png' ,
+  'assets/images/hangman-images/hangman-3.png' ,
+  'assets/images/hangman-images/hangman-4.png' ,
+  'assets/images/hangman-images/hangman-5.png' ,
+  'assets/images/hangman-images/hangman-initial.png' ,
+];
 var guess
 var alreadyGuessed = []
-var guessesRem = 5
+var guessesRem = 6
 var wins = 0
 var currentWord = wordBank[wins]
 var currentWordText = []
@@ -17,6 +26,7 @@ function writeDisplay() {
   document.getElementById("currentWord-text").innerHTML = currentWordText
   document.getElementById("guessesRem-text").innerHTML = guessesRem
   document.getElementById("alreadyGuessed-text").innerHTML = alreadyGuessed
+  document.getElementById("hangman-image").src = hangmanImagesArray[guessesRem]
 }
 
 // resets currentWordText array with _'s
@@ -60,7 +70,7 @@ function keyPress() {
       setTimeout(function(){
         wins ++
         currentWord = wordBank[wins]
-        guessesRem = 5
+        guessesRem = 6
         alreadyGuessed = []
         captionText = ""
         reset()
@@ -80,7 +90,7 @@ function keyPress() {
       setTimeout(function(){
         wins = 0
         currentWord = wordBank[0]
-        guessesRem = 5
+        guessesRem = 6
         alreadyGuessed = []
         captionText = ""
         reset()
