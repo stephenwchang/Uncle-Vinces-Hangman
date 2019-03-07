@@ -2,3 +2,17 @@
   width: 200px;
   height: auto;
 }
+
+#currentWord-text {
+  font-size: 26px;
+}
+
+#wins-text {
+  color: green;
+  font-weight: bold;
+}
+
+#guessesRem-text {
+  color: red;
+  font-weight: bold;
+}
