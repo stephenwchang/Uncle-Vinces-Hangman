@@ -4,46 +4,60 @@
     <meta charset="utf-8">
     <title>Hangman</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
   </head>
   <body>
   <audio id="victory-audio" src="assets/audio/cheering.wav" preload="auto"></audio>
-  <audio id="loss-audio" src="assets/audio/aww.wav" preload="auto"></audio>
+  <audio id="loss-audio" src="assets/audio/sad_trombone.wav" preload="auto"></audio>
 
 
-  <h1>Uncle Vince's Hangman Game</h1>
+
 
   <div class="container">
-
-    <div class="row pb-3">
-      <div class="col-sm">
-        <img src="assets/images/vince.jpeg">
+    <div class="head pt-5 pb-3">
+      <div class ="row">
+          <img class="mx-auto mb-3 rounded" id="vinceImage" src="assets/images/vince.jpeg">
       </div>
+      <div class="row">
+        <div class="col">
+          <h1 class="display-5">Uncle Vince's Hangman Game</h1>
+          <div class="lead">press any letter on your keyboard to get started!</div>
+          <div class="lead text-muted"><small>(hint: words are basketball themed)</small></div>
+        </div>
+      </div>
+
     </div>
+    <div class="gameContent border rounded">
+      <div class="row my-1">
+        <div id="wins-text">Wins: 0</div>
+        <div class="mx-auto">
+          <h2 id="caption-text" class="pt-2"></h2>
+        </div>
+      </div>
 
-    <div class="row">
-      <div class="col-sm">
+      <div class="row">
+        <div class="col-sm-6 pt-5 leftcol">
 
-        <p id="start-text" class="pb-2">Press any letter on your keyboard to get started!</p>
 
-        <h2 id="caption-text" class="pb-2"></h2>
+          <h6 id="currentWord" class="pb-2"><b>Current Word</b></h6>
 
-        <p id="wins-text">Wins: 0</p>
 
-        <p>Current Word:</p>
+          <p id="currentWord-text">_ _ _ _ _ _ _ _ _ _</p>
 
-        <p id="currentWord-text">_ _ _ _ _ _ _ _ _ _</p>
+          <div>Guesses Remaining: <span id="guessesRem-text">6</span>
+          </div>
 
-        <p>Number of guesses remaining</p>
 
-        <p id="guessesRem-text">6</p>
+        </div>
+        <div class="col-sm-6 rightcol">
+            <img id="hangman-image" class="pb-3" src="assets/images/hangman-images/hangman-initial.png" >
 
-        <p>Letters already guessed</p>
+            <div>Letters used<div>
 
-        <p id="alreadyGuessed-text"></p>
-
-        <img id="hangman-image" src="assets/images/hangman-images/hangman-initial.png" >
+            <div id="alreadyGuessed-text"></div>
+        </div>
 
       </div>
     </div>
