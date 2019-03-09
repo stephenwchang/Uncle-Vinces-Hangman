@@ -19,11 +19,13 @@ var currentWordText = [];
 var captionText = "";
 
 //generate answer key
-for (var i=0; i<wordBank.length; i++) {
-  var newAnswer = document.createElement("div");
-  newAnswer.className = "dropdown-item";
-  newAnswer.innerHTML = wordBank[i];
-  document.getElementById("answerKey").appendChild(newAnswer);
+function genAnswerKey() {
+  for (var i=0; i<wordBank.length; i++) {
+    var newAnswer = document.createElement("div");
+    newAnswer.className = "dropdown-item";
+    newAnswer.innerHTML = wordBank[i];
+    document.getElementById("answerKey").appendChild(newAnswer);
+  }
 }
 
 // write display function
@@ -71,7 +73,7 @@ function keyPress() {
 
     // win condition: if there are no longer any _'s in currentWordText
     if (currentWordText.indexOf("_") === -1) {
-      captionText = "Good job! Now try the next one!";
+      captionText = "Good job! Now try this one.";
       document.getElementById("caption-text").style.color = "#007bff";
       document.getElementById("caption-text").innerHTML = captionText;
       document.getElementById("victory-audio").play();
@@ -92,7 +94,7 @@ function keyPress() {
   // lose condition
   if (guessesRem === 0) {
 
-      captionText = "You ran out of guesses. Try again.";
+      captionText = "No more guesses. Try again.";
       document.getElementById("caption-text").style.color = "red";
       document.getElementById("caption-text").innerHTML = captionText;
       document.getElementById("loss-audio").play();
@@ -106,6 +108,22 @@ function keyPress() {
       }, 2500)
   }
 }
+
+// additional feature for user to submit a word to play (working as intended, however typing into form will still trigger keyup event)
+
+// document.getElementById("submitButton").addEventListener("click", userAddWord);
+// function userAddWord() {
+//   wordBank.unshift(document.getElementById("userWord").value);
+//   currentWord = wordBank[0];
+//   document.getElementById("userForm").reset();
+//   gussesRem = 6;
+//   alreadyGuessed = [];
+//   captionText = "";
+//   reset();
+//   writeDisplay();
+// }
+
+genAnswerKey();
 
 reset();
 

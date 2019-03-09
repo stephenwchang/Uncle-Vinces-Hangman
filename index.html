@@ -12,11 +12,7 @@
   <audio id="victory-audio" src="assets/audio/cheering.wav" preload="auto"></audio>
   <audio id="loss-audio" src="assets/audio/sad_trombone.wav" preload="auto"></audio>
 
-
-
-
-  <div class="container">
-    <div class="head pt-5 pb-3">
+  <div class="container pt-5 pb-3">
       <div class ="row">
           <img class="mx-auto mb-3 rounded" id="vinceImage" src="assets/images/vince.jpeg">
       </div>
@@ -27,54 +23,42 @@
           <div class="lead text-muted"><small>(hint: all words are basketball related!)</small></div>
         </div>
       </div>
-
-    </div>
-    <div class="gameContent border rounded">
-      <div class="row my-1">
-        <div id="wins-text">Wins: 0</div>
-        <div class="mx-auto">
-          <h2 id="caption-text" class="pt-3"></h2>
-        </div>
-        <div class="btn-group dropdown">
-          <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Answers
-          </button>
-          <div class="dropdown-menu" id="answerKey">
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-6 pt-5 leftcol">
-
-
-          <h6 id="currentWord" class="pb-2"><b>Current Word</b></h6>
-
-
-          <p id="currentWord-text">_ _ _ _ _ _ _ _ _ _</p>
-
-          <div>Guesses Remaining: <span id="guessesRem-text">6</span>
-          </div>
-
-
-        </div>
-        <div class="col-sm-6 rightcol">
-            <img id="hangman-image" class="pb-3" src="assets/images/hangman-images/hangman-initial.png" >
-
-            <div>Letters used<div>
-
-            <div id="alreadyGuessed-text"></div>
-        </div>
-
-      </div>
-    </div>
-
-
-
-
-
-
   </div>
+  <div class="gameContent border rounded">
+    <div class="row my-1">
+      <div id="wins-text">Wins: 0</div>
+      <div class="mx-auto">
+        <h2 id="caption-text" class="pt-3"></h2>
+      </div>
+      <div class="btn-group dropdown">
+        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Answers
+        </button>
+        <div class="dropdown-menu" id="answerKey"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 pt-5 leftcol">
+        <h6 id="currentWord" class="pb-2"><b>Current Word</b></h6>
+        <p id="currentWord-text">_ _ _ _ _ _ _ _ _ _</p>
+        <div>Guesses Remaining: <span id="guessesRem-text">6</span></div>
+      </div>
+      <div class="col-sm-6 rightcol">
+          <img id="hangman-image" class="pb-3" src="assets/images/hangman-images/hangman-initial.png" >
+          <div>Letters used</div>
+          <div id="alreadyGuessed-text"></div>
+      </div>
+    </div>
+  </div>
+  <!--
+  //feature that allows user to submit a word to play
+  <form class="form-inline" id="userForm">
+    <div class="form-group mx-sm-3 mb-2">
+      <input type="text" class="form-control" id="userWord" value="" placeholder="Try your own word!">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2" id="submitButton">Submit</button>
+  </form>
+  -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

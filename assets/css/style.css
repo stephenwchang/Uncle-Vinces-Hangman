@@ -56,6 +56,9 @@ body {
   font-weight: bold;
 }
 
+#userForm {
+}
+
 @media only screen and (max-width: 770px) {
   .gameContent {
     max-width: 550px;
