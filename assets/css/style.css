@@ -4,6 +4,15 @@ body {
   text-align: center;
 }
 
+.gameContent {
+  max-width: 700px;
+  margin: auto;
+}
+
+.btn {
+  max-height: 40px;
+  margin-right: 19px;
+}
 
 #vinceImage{
   height: 182px;
@@ -12,11 +21,11 @@ body {
 #caption-text {
   min-height: 60px;
   font-weight: bold;
+  margin-right: 40px;
 }
 
 #alreadyGuessed-text {
   min-height: 40px;
-  margin: 0px 170px 30px 170px;
   padding: 5px;
   color: indianred;
   font-weight: bold;
@@ -45,4 +54,10 @@ body {
 #guessesRem-text {
   color: red;
   font-weight: bold;
+}
+
+@media only screen and (max-width: 770px) {
+  .gameContent {
+    max-width: 550px;
+  }
 }

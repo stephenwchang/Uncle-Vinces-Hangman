@@ -1,6 +1,5 @@
-// Word Guess Game (word bank can be modified without breaking)
-
-var wordBank = ["basketball", "jumpshot", "dribble", "rebound", "assist", "pass"];
+// Word Guess Game (word bank can be modified without breaking functions)
+var wordBank = ["basketball", "crossover", "dribble", "backboard", "assist", "dunk", "layup", "jumpshot", "foul"];
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var hangmanImagesArray = [
   'assets/images/hangman-images/hangman-0.png' ,
@@ -18,6 +17,14 @@ var wins = 0;
 var currentWord = wordBank[wins];
 var currentWordText = [];
 var captionText = "";
+
+//generate answer key
+for (var i=0; i<wordBank.length; i++) {
+  var newAnswer = document.createElement("div");
+  newAnswer.className = "dropdown-item";
+  newAnswer.innerHTML = wordBank[i];
+  document.getElementById("answerKey").appendChild(newAnswer);
+}
 
 // write display function
 function writeDisplay() {
@@ -37,10 +44,11 @@ function reset() {
   }
 }
 
-
+//run this function when a user presses a key
 function keyPress() {
 
   guess = event.key.toLowerCase();
+
   // for testing
   console.log(guess);
 
