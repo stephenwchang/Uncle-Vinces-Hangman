@@ -28,7 +28,7 @@ function genAnswerKey() {
   }
 }
 
-// write display function
+// display output function
 function writeDisplay() {
   document.getElementById("caption-text").innerHTML = captionText;
   document.getElementById("wins-text").innerHTML = "Wins: " + wins;
@@ -46,31 +46,23 @@ function reset() {
   }
 }
 
-//run this function when a user presses a key
+//function triggered on keyup
 function keyPress() {
-
   guess = event.key.toLowerCase();
-
-  // for testing
-  console.log(guess);
-
-  //initial check for: 1. if user guess is a viable character 2. there are guesses remaining 3. captionText is empty (otherwise, user can still input guesses during victory/loss caption)
+  //initial check for: 1. if user guess is a viable character 2. there are guesses remaining 3. captionText is empty (otherwise, user would still be able to input guesses during victory/loss caption)
   if (alphabet.indexOf(guess) > -1 && guessesRem != 0 && captionText === "") {
-    // loops a condition to check if user's guess exists in the current word, and then reveals them in respective order in the document
+    // loops a condition to check if user's guess exists in the current word, and if so, reveals the letter(s) in the DOM
     for (var i=0; i < currentWord.length; i++) {
       if (guess === currentWord[i]) {
         currentWordText[i] = guess;
       }
     }
-
-    // pushes user guess to alreadyGuessed if user guess does not exist in currentWord or alreadyGuessed
+    // pushes user guess to alreadyGuessed if user guess does not exist in either currentWord or alreadyGuessed
     if (currentWord.indexOf(guess) == -1 && alreadyGuessed.indexOf(guess) === -1) {
         alreadyGuessed.push(guess);
         guessesRem --;
     }
-
     writeDisplay();
-
     // win condition: if there are no longer any _'s in currentWordText
     if (currentWordText.indexOf("_") === -1) {
       captionText = "Good job! Now try this one.";
@@ -85,15 +77,11 @@ function keyPress() {
         captionText = "";
         reset();
         writeDisplay();
-
       }, 2500)
     }
-
   }
-
-  // lose condition
+  // lose condition (no more guesses)
   if (guessesRem === 0) {
-
       captionText = "No more guesses. Try again.";
       document.getElementById("caption-text").style.color = "red";
       document.getElementById("caption-text").innerHTML = captionText;
@@ -108,8 +96,7 @@ function keyPress() {
       }, 2500)
   }
 }
-
-// additional feature for user to submit a word to play (working as intended, however typing into form will still trigger keyup event)
+// additional feature that allowes user to submit a word to play (working as intended, however typing into form wil trigger the active eventlistener for keyup)
 
 // document.getElementById("submitButton").addEventListener("click", userAddWord);
 // function userAddWord() {
@@ -122,9 +109,6 @@ function keyPress() {
 //   reset();
 //   writeDisplay();
 // }
-
 genAnswerKey();
-
 reset();
-
 document.addEventListener("keyup", keyPress);
