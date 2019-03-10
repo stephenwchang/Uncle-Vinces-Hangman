@@ -18,14 +18,20 @@ var currentWord = wordBank[wins];
 var currentWordText = [];
 var captionText = "";
 
-//generate answer key
+// generate full amswer ley answer key
+// function genAnswerKey() {
+//   for (var i=0; i<wordBank.length; i++) {
+//     var newAnswer = document.createElement("div");
+//     newAnswer.className = "dropdown-item";
+//     newAnswer.innerHTML = wordBank[i];
+//     document.getElementById("answerKey").appendChild(newAnswer);
+//   }
+// }
+
+// generate current answer key
+
 function genAnswerKey() {
-  for (var i=0; i<wordBank.length; i++) {
-    var newAnswer = document.createElement("div");
-    newAnswer.className = "dropdown-item";
-    newAnswer.innerHTML = wordBank[i];
-    document.getElementById("answerKey").appendChild(newAnswer);
-  }
+    document.getElementById("dropdown-item").innerHTML = currentWord;
 }
 
 // display output function
@@ -77,6 +83,7 @@ function keyPress() {
         captionText = "";
         reset();
         writeDisplay();
+        genAnswerKey();
       }, 2500)
     }
   }
@@ -92,6 +99,7 @@ function keyPress() {
         captionText = "";
         reset();
         writeDisplay();
+        genAnswerKey();
 
       }, 2500)
   }
