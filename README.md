@@ -1,8 +1,8 @@
 # Uncle Vince's Hangman Game
 Basketball themed hangman game
 
-features:
+Features:
 
-dropdown answer key
-dynamic hangman stick figure
-sound effects
+- Dropdown answer key
+- Dynamic hangman stick figure
+- Sound effects
